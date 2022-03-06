@@ -11,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static nc.umtpcm.welfare.statementWelfare.version;
+
 public class GuiHubWelfare {
     public static void main_gui(Player player){
         //新建物品栏（GUI）
@@ -72,7 +74,7 @@ public class GuiHubWelfare {
         ItemMeta zgui_ver_item_meta = zgui_ver_item.getItemMeta();
         Objects.requireNonNull(zgui_ver_item_meta).setDisplayName(ChatColor.AQUA+"插件版本");
         ArrayList<String> zgui_ver_item_lore = new ArrayList<>();
-        zgui_ver_item_lore.add(ChatColor.AQUA+"插件当前版本：6.4");
+        zgui_ver_item_lore.add(ChatColor.AQUA+"插件当前版本："+version);
         zgui_ver_item_lore.add(ChatColor.AQUA+"点我查看更新日志");
         zgui_ver_item_meta.setLore(zgui_ver_item_lore);
         zgui_ver_item.setItemMeta(zgui_ver_item_meta);
