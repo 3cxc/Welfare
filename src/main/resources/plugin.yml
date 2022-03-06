@@ -1,0 +1,25 @@
+name: Welfare
+version: '${project.version}'
+main: nc.umtpcm.welfare.Welfare
+api-version: 1.17
+authors: [ 3cxc ]
+description: 一个轻量级的福利插件！
+commands:
+  welbfo:
+    description: 获得福利(旧)
+  welbfn:
+    description: 获得福利(新)
+  welver:
+    description: 检查版本
+  welgui:
+    description: 打开主菜单
+  welmusic:
+    description: 获得音乐材质包
+  welhelp:
+    description: 获得命令帮助
+  wel404:
+    description: 自杀(假的)
+  welkill:
+    description: 自杀(假的)
+  welGithub:
+    description: 访问Github
