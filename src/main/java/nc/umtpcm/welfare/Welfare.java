@@ -1,8 +1,8 @@
 package nc.umtpcm.welfare;
 
+import nc.umtpcm.welfare.commandsWelfare.*;
 import nc.umtpcm.welfare.eventsWelfare.*;
 import org.bukkit.plugin.java.JavaPlugin;
-import nc.umtpcm.welfare.commandsWelfare.*;
 
 import java.util.Objects;
 
@@ -29,7 +29,6 @@ public final class Welfare extends JavaPlugin {
     public void onEnable() {
         // 启动插件
         getLogger().info("福利插件"+version + "已加载，作者：3cxc");
-
         // 添加事件
         getServer().getPluginManager().registerEvents(new Guioldbf(),this);
         getServer().getPluginManager().registerEvents(new Guinewbf(),this);
@@ -47,7 +46,9 @@ public final class Welfare extends JavaPlugin {
         Objects.requireNonNull(getCommand("welkill")).setExecutor(new kickWelfare());
         Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());
         Objects.requireNonNull(getCommand("welbfn")).setExecutor(new newbf());
+        Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());
     }
+
 
     @Override
     public void onDisable() {

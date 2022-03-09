@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.Objects;
 
+import static nc.umtpcm.welfare.statementWelfare.github;
+
 public class GuiGithub implements Listener {
     @EventHandler
     public void guiGithub(InventoryClickEvent event) {
@@ -21,7 +23,7 @@ public class GuiGithub implements Listener {
                     player.closeInventory();
                     player.sendMessage(ChatColor.AQUA + "想要告诉我们插件的问题？");
                     player.sendMessage(ChatColor.AQUA + "访问下面的网址来给我们提出建议吧！");
-                    player.sendMessage(ChatColor.AQUA + "https://github.com/3cxc/Welfare");
+                    player.sendMessage(ChatColor.AQUA + github);
                 }
             }
         } catch (NullPointerException ignored) {

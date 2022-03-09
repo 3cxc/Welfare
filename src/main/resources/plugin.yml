@@ -23,3 +23,5 @@ commands:
     description: 自杀(假的)
   welGithub:
     description: 访问Github
+  welup:
+    description: 检查更新
