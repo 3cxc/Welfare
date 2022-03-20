@@ -6,7 +6,7 @@
 
     <groupId>nc.umtpcm</groupId>
     <artifactId>Welfare</artifactId>
-    <version>6.6</version>
+    <version>8</version>
     <packaging>jar</packaging>
 
     <name>Welfare</name>
