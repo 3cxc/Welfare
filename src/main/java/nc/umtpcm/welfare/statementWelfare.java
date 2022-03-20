@@ -3,8 +3,8 @@ package nc.umtpcm.welfare;
 import org.bukkit.entity.Player;
 
 public class statementWelfare {
-    public static double version = 8;
-    public static String vercon = "更新英文版";
+    public static double version = 9;
+    public static String vercon = "修复已知问题";
     public static String github = "https://github.com/3cxc/Welfare";
     public static double webver = 0;
     public static double Pwebver = 0;
@@ -18,6 +18,7 @@ public class statementWelfare {
     public static String ConUp_0 = null;//更新检查
     public static String ConUp_1_1 = null;
     public static String ConUp_1_2 = null;
+    public static String ConUp_1_3 = null;
     public static String ConUp_2 = null;
     public static String ConUp_3 = null;
 

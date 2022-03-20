@@ -22,7 +22,7 @@ public class CongetLatestVersions {
         }
         latestVer = webver;
         if (version < latestVer) {
-            System.out.println(ChatColor.AQUA + ConUp_1_1 + github + ConUp_1_2);
+            System.out.println(ChatColor.AQUA + ConUp_1_1 + latestVer + ConUp_1_3 + github + ConUp_1_2);
         } else if (version == latestVer) {
             System.out.println(ChatColor.AQUA + ConUp_2);
         } else if (version > latestVer) {

@@ -22,7 +22,7 @@ public class PlayerLatestVersions {
         }
         PlatestVer = Pwebver;
         if (version < PlatestVer) {
-            UpdatePlayer.sendMessage(ChatColor.AQUA +  Welprefix + ConUp_1_1 + github + ConUp_1_2);
+            UpdatePlayer.sendMessage(ChatColor.AQUA +  Welprefix + ConUp_1_1 + latestVer + ConUp_1_3 + github + ConUp_1_2);
         } else if (version == PlatestVer) {
             UpdatePlayer.sendMessage(ChatColor.AQUA +  Welprefix + ConUp_2);
         } else if (version > PlatestVer) {
