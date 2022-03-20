@@ -9,21 +9,20 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.Objects;
 
-import static nc.umtpcm.welfare.statementWelfare.vercon;
-import static nc.umtpcm.welfare.statementWelfare.version;
+import static nc.umtpcm.welfare.statementWelfare.*;
 
 public class Guiver implements Listener {
     @EventHandler
     public void guiver(InventoryClickEvent event) {
-        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "菜单"))//防止拿走了物品
+        if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + gui_0))//防止拿走了物品
             event.setCancelled(true);
         try {
             if (Objects.requireNonNull(event.getCurrentItem()).getType().equals(Material.ENDER_CHEST)) {
-                if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "菜单")) {//进行判定是否有移动指定物品且是不是在名叫菜单的GUI里移动
+                if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + gui_0)) {//进行判定是否有移动指定物品且是不是在名叫菜单的GUI里移动
                     Player player = (Player) event.getWhoClicked();
                     player.closeInventory();
-                    player.sendMessage(ChatColor.BLUE + "Welfare 当前版本："+ version);//Message可以防止某人刷信息到全服玩家的消息框
-                    player.sendMessage(ChatColor.AQUA + "更新内容："+vercon);
+                    player.sendMessage(ChatColor.BLUE + ver_1+ version);//Message可以防止某人刷信息到全服玩家的消息框
+                    player.sendMessage(ChatColor.AQUA + ver_2+vercon);
                 }
             }
         } catch (NullPointerException ignored) {

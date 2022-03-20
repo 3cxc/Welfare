@@ -9,6 +9,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.Objects;
 
+import static nc.umtpcm.welfare.statementWelfare.Music_1;
+
 public class Guimusic implements Listener {
     @EventHandler
     public void guimusic(InventoryClickEvent event) {
@@ -19,7 +21,7 @@ public class Guimusic implements Listener {
                 if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "菜单")) {//进行判定是否有移动指定物品且是不是在名叫菜单的GUI里移动
                     Player player = (Player) event.getWhoClicked();
                     player.closeInventory();
-                    player.sendMessage(ChatColor.BLUE + "音乐材质包地址，密码：BUGgugu");
+                    player.sendMessage(ChatColor.BLUE + Music_1);
                     player.sendMessage(ChatColor.BLUE + "https://mc-iec.lanzouv.com/b02ou5tef");
                 }
             }

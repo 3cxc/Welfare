@@ -1,12 +1,14 @@
 package nc.umtpcm.welfare;
 
+import nc.umtpcm.welfare.Updates.MainUpdateWelfare;
 import nc.umtpcm.welfare.commandsWelfare.*;
 import nc.umtpcm.welfare.eventsWelfare.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-import static nc.umtpcm.welfare.statementWelfare.version;
+import static nc.umtpcm.welfare.Updates.CongetLatestVersions.CongetLatestVersion;
+import static nc.umtpcm.welfare.languagesWelfare.Application_Language.Application_language;
 // Licensed to the Apache Software Foundation (ASF) under one or more
 // contributor license agreements.  See the NOTICE file distributed with
 // this work for additional information regarding copyright ownership.
@@ -27,8 +29,10 @@ public final class Welfare extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // 启动插件
-        getLogger().info("福利插件"+version + "已加载，作者：3cxc");
+        //检查语言
+        Application_language();
+        //检查更新
+        CongetLatestVersion();
         // 添加事件
         getServer().getPluginManager().registerEvents(new Guioldbf(),this);
         getServer().getPluginManager().registerEvents(new Guinewbf(),this);
@@ -47,12 +51,12 @@ public final class Welfare extends JavaPlugin {
         Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());
         Objects.requireNonNull(getCommand("welbfn")).setExecutor(new newbf());
         Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());
+        Objects.requireNonNull(getCommand("welus")).setExecutor(new language_en_us_Welfare());
+        Objects.requireNonNull(getCommand("welcn")).setExecutor(new language_zh_cn_Welfare());
     }
 
 
     @Override
     public void onDisable() {
-        // 卸载插件
-        getLogger().info("福利插件"+version + "已卸载，作者：3cxc");
     }
 }

@@ -9,7 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.Objects;
 
-import static nc.umtpcm.welfare.statementWelfare.github;
+import static nc.umtpcm.welfare.statementWelfare.*;
 
 public class GuiGithub implements Listener {
     @EventHandler
@@ -21,8 +21,8 @@ public class GuiGithub implements Listener {
                 if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "菜单")) {//进行判定是否有移动指定物品且是不是在名叫菜单的GUI里移动
                     Player player = (Player) event.getWhoClicked();
                     player.closeInventory();
-                    player.sendMessage(ChatColor.AQUA + "想要告诉我们插件的问题？");
-                    player.sendMessage(ChatColor.AQUA + "访问下面的网址来给我们提出建议吧！");
+                    player.sendMessage(ChatColor.AQUA + Github_1);
+                    player.sendMessage(ChatColor.AQUA + Github_2);
                     player.sendMessage(ChatColor.AQUA + github);
                 }
             }

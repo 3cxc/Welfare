@@ -25,3 +25,7 @@ commands:
     description: 访问Github
   welup:
     description: 检查更新
+  welcn:
+    description: 切换中文
+  welus:
+    description: 切换英文
