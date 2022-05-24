@@ -3,7 +3,8 @@ version: '${project.version}'
 main: nc.umtpcm.welfare.Welfare
 api-version: 1.17
 authors: [ 3cxc ]
-description: 一个轻量级的福利插件！
+description: 一个轻量的福利插件
+website: https://github.com/3cxc/Welfare
 commands:
   welbfo:
     description: 获得福利(旧)
@@ -13,19 +14,20 @@ commands:
     description: 检查版本
   welgui:
     description: 打开主菜单
-  welmusic:
-    description: 获得音乐材质包
   welhelp:
     description: 获得命令帮助
-  wel404:
-    description: 自杀(假的)
-  welkill:
-    description: 自杀(假的)
   welGithub:
     description: 访问Github
   welup:
     description: 检查更新
-  welcn:
-    description: 切换中文
-  welus:
-    description: 切换英文
+  welfare:
+    description: 插件主命令
+  welreload:
+    description: 重载插件
+  welrel:
+    description: 重载插件
+
+permissions:
+  Welfare.admin.reload:
+    default: op
+    description: 重载插件权限

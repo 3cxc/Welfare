@@ -1,14 +1,22 @@
 package nc.umtpcm.welfare;
 
-import nc.umtpcm.welfare.Updates.MainUpdateWelfare;
-import nc.umtpcm.welfare.commandsWelfare.*;
-import nc.umtpcm.welfare.eventsWelfare.*;
+import nc.umtpcm.welfare.Update.MainUpdateWelfare;
+import nc.umtpcm.welfare.command.*;
+import nc.umtpcm.welfare.gui.GuiGithub;
+import nc.umtpcm.welfare.gui.Guibf;
+import nc.umtpcm.welfare.gui.Guiver;
+import nc.umtpcm.welfare.tools.UpdateTime;
+import nc.umtpcm.welfare.tools.statementWelfare;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Objects;
 
-import static nc.umtpcm.welfare.Updates.CongetLatestVersions.CongetLatestVersion;
-import static nc.umtpcm.welfare.languagesWelfare.Application_Language.Application_language;
+import static nc.umtpcm.welfare.tools.statementWelfare.*;
+//以下是该插件的开源许可证
+
+//The following is the open source license for the plugin
+
 // Licensed to the Apache Software Foundation (ASF) under one or more
 // contributor license agreements.  See the NOTICE file distributed with
 // this work for additional information regarding copyright ownership.
@@ -27,36 +35,69 @@ import static nc.umtpcm.welfare.languagesWelfare.Application_Language.Applicatio
 
 public final class Welfare extends JavaPlugin {
 
+    public File config;
+
+    public static Welfare instant;
+    public Welfare() {
+        this.config = new File(getDataFolder() + File.separator + "config.yml");
+        instant = this;
+    }
+
+    @SuppressWarnings("PointlessBooleanExpression")
     @Override
     public void onEnable() {
-        //检查语言
-        Application_language();
+
+        //加载配置文件
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        //启动提示
+        getLogger().info("插件已加载，作者:3cxc");
+        getLogger().info("请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
+        getLogger().info("插件的Github地址：https://github.com/3cxc/Welfare");
+        if (WelfareDev == 1){
+            getLogger().info("警告：您目前正在使用内部版本！您应该知道您在做什么！");
+            getLogger().info("警告：我们不会对内部版本提供支持！如果使用内部版本发生任何问题我们不会处理！");
+            getLogger().info("警告！该插件已停止更新！请使用正式版本：11 否则后果自负！");
+        }
+
         //检查更新
-        CongetLatestVersion();
+        new UpdateTime().run();
+
         // 添加事件
-        getServer().getPluginManager().registerEvents(new Guioldbf(),this);
-        getServer().getPluginManager().registerEvents(new Guinewbf(),this);
-        getServer().getPluginManager().registerEvents(new Guimusic(),this);
-        getServer().getPluginManager().registerEvents(new Guikick(),this);
-        getServer().getPluginManager().registerEvents(new GuiGithub(),this);
-        getServer().getPluginManager().registerEvents(new Guiver(),this);
+        getServer().getPluginManager().registerEvents(new Guibf(),this);//福利 事件
+        getServer().getPluginManager().registerEvents(new GuiGithub(),this);//Github 事件
+        getServer().getPluginManager().registerEvents(new Guiver(),this);//查看版本 事件
         //添加命令
-        Objects.requireNonNull(getCommand("welbfo")).setExecutor(new oldbf());
-        Objects.requireNonNull(getCommand("welver")).setExecutor(new versionWelfare());
-        Objects.requireNonNull(getCommand("welgui")).setExecutor(new GuiOpen());
-        Objects.requireNonNull(getCommand("welmusic")).setExecutor(new musicWelfare());
-        Objects.requireNonNull(getCommand("welhelp")).setExecutor(new helpWelfare());
-        Objects.requireNonNull(getCommand("wel404")).setExecutor(new kickWelfare());
-        Objects.requireNonNull(getCommand("welkill")).setExecutor(new kickWelfare());
-        Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());
-        Objects.requireNonNull(getCommand("welbfn")).setExecutor(new newbf());
-        Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());
-        Objects.requireNonNull(getCommand("welus")).setExecutor(new language_en_us_Welfare());
-        Objects.requireNonNull(getCommand("welcn")).setExecutor(new language_zh_cn_Welfare());
+        Objects.requireNonNull(getCommand("welver")).setExecutor(new versionWelfare());//查看版本 命令
+        Objects.requireNonNull(getCommand("welgui")).setExecutor(new GuiOpen());//GUI 命令
+        Objects.requireNonNull(getCommand("welhelp")).setExecutor(new helpWelfare());//帮助 命令
+        Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());//访问Github 命令
+        Objects.requireNonNull(getCommand("welbfn")).setExecutor(new bf());//福利 命令
+        Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());//检查更新 命令
+        Objects.requireNonNull(getCommand("welreload")).setExecutor(new reload());//重载命令
+        Objects.requireNonNull(getCommand("welrel")).setExecutor(new reload());//重载命令
+        Objects.requireNonNull(getCommand("Welfare")).setExecutor(new welfare());//插件主命令
+
+        //定时检查更新,每隔30分钟检测一次
+        if (WelfareDev == 1){//检测是否为测试版本
+            if (statementWelfare.config.getConfig().getBoolean("TimeUpdate") == true){//检测定时检查更新是否开启
+                new UpdateTime().run();
+            }else {
+                getLogger().info("自动检查更新已禁用！");
+            }
+        }
+
     }
 
 
     @Override
     public void onDisable() {
+        getLogger().info("插件已卸载，作者:3cxc");
+        if (WelfareDev == 1){
+            getLogger().info("警告：您目前正在使用内部版本！您应该知道您在做什么！");
+            getLogger().info("警告：我们不会对内部版本提供支持！如果使用内部版本发生任何问题我们不会处理！");
+            getLogger().info("警告！该插件已停止更新！请使用正式版本：11 否则后果自负！");
+        }
     }
 }
