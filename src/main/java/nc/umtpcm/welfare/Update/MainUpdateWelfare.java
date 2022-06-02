@@ -15,9 +15,12 @@ public class MainUpdateWelfare implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player){
             UpdatePlayer = (Player) sender;
+            Player player = (Player) sender;
             if (WelfareDev == 0){
-                PlayergetLatestVersion();
-            }else UpdatePlayer.sendMessage(ChatColor.RED+ Welprefix +"错误：内部版本无法检查更新！");
+                if (player.hasPermission("Welfare.admin.reload")){
+                    PlayergetLatestVersion();
+                }else player.sendMessage(ChatColor.RED + Welprefix + "您没有权限！");
+            }else player.sendMessage(ChatColor.RED+ Welprefix +"错误：内部版本无法检查更新！");
         }else{
             if (WelfareDev == 0){
                 CongetLatestVersion();

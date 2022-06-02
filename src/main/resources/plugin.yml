@@ -28,6 +28,15 @@ commands:
     description: 重载插件
 
 permissions:
+  Welfare.admin:
+    default: op
+    description: Welfare全部的权限
+    children:
+      Welfare.admin.reload: true
+      Welfare.admin.update: true
   Welfare.admin.reload:
     default: op
     description: 重载插件权限
+  Welfare.admin.update:
+    default: op
+    description: 检查更新权限

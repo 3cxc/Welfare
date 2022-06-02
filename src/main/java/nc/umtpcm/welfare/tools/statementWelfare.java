@@ -1,13 +1,14 @@
 package nc.umtpcm.welfare.tools;
 
+import nc.umtpcm.welfare.Welfare;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 
 public class statementWelfare {
-    public static Plugin config = nc.umtpcm.welfare.Welfare.getPlugin(nc.umtpcm.welfare.Welfare.class);
-    public static int version = 17;
-    public static String vercon = "增加新功能，修复已知问题,完全移除后门";
+    public static Plugin config = Welfare.getPlugin(Welfare.class);
+    public static int version = config.getConfig().getInt("Version");
+    public static String vercon = "修复更新站无法访问的问题，增加新功能";
     public static String github = "https://github.com/3cxc/Welfare";
     public static int webver = 0;
     public static int Pwebver = 0;

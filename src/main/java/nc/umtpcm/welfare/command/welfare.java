@@ -1,5 +1,6 @@
 package nc.umtpcm.welfare.command;
 
+import jdk.internal.joptsimple.internal.Strings;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +20,6 @@ public class welfare implements CommandExecutor {
         }else {
             System.out.println(ChatColor.AQUA + "插件当前版本：" + version);
         }
-
         return false;
     }
 }

@@ -1,5 +1,6 @@
 package nc.umtpcm.welfare.gui;
 
+import nc.umtpcm.welfare.gui.core.Gui_Hub;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,7 +20,7 @@ public class Guibf implements Listener {
                 if (Objects.requireNonNull(event.getCurrentItem()).getType().equals(Material.COAL_BLOCK)) {
                     if (event.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "菜单")) {//进行判定是否有移动指定物品且是不是在名叫菜单的GUI里移动
                         Player player = (Player) event.getWhoClicked();//判断是否有点击
-                        Gui_Hub.confirm_newbf_gui(player);//打开新 福利 确认菜单
+                        Gui_Hub.confirm_bf_gui(player);//打开新 福利 确认菜单
                     }
                 }
             } catch (NullPointerException ignored) {//防止Null报错

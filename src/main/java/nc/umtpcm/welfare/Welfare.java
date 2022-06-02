@@ -1,18 +1,23 @@
 package nc.umtpcm.welfare;
 
+import nc.umtpcm.welfare.Update.GITHUB_AND_GITEE;
 import nc.umtpcm.welfare.Update.MainUpdateWelfare;
 import nc.umtpcm.welfare.command.*;
+import nc.umtpcm.welfare.event.PlayerChatEvent;
+import nc.umtpcm.welfare.event.eggs.Bed_egg;
 import nc.umtpcm.welfare.gui.GuiGithub;
 import nc.umtpcm.welfare.gui.Guibf;
 import nc.umtpcm.welfare.gui.Guiver;
-import nc.umtpcm.welfare.tools.UpdateTime;
 import nc.umtpcm.welfare.tools.statementWelfare;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.Objects;
 
-import static nc.umtpcm.welfare.tools.statementWelfare.*;
+import static java.lang.Thread.sleep;
+import static nc.umtpcm.welfare.Update.CongetLatestVersions.CongetLatestVersion;
+import static nc.umtpcm.welfare.tools.statementWelfare.WelfareDev;
+
 //以下是该插件的开源许可证
 
 //The following is the open source license for the plugin
@@ -32,7 +37,6 @@ import static nc.umtpcm.welfare.tools.statementWelfare.*;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 public final class Welfare extends JavaPlugin {
 
     public File config;
@@ -43,14 +47,9 @@ public final class Welfare extends JavaPlugin {
         instant = this;
     }
 
-    @SuppressWarnings("PointlessBooleanExpression")
     @Override
+    @SuppressWarnings("PointlessBooleanExpression")
     public void onEnable() {
-
-        //加载配置文件
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
-
         //启动提示
         getLogger().info("插件已加载，作者:3cxc");
         getLogger().info("请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
@@ -61,35 +60,47 @@ public final class Welfare extends JavaPlugin {
             getLogger().info("警告！该插件已停止更新！请使用正式版本：11 否则后果自负！");
         }
 
-        //检查更新
-        new UpdateTime().run();
 
-        // 添加事件
-        getServer().getPluginManager().registerEvents(new Guibf(),this);//福利 事件
-        getServer().getPluginManager().registerEvents(new GuiGithub(),this);//Github 事件
-        getServer().getPluginManager().registerEvents(new Guiver(),this);//查看版本 事件
-        //添加命令
-        Objects.requireNonNull(getCommand("welver")).setExecutor(new versionWelfare());//查看版本 命令
-        Objects.requireNonNull(getCommand("welgui")).setExecutor(new GuiOpen());//GUI 命令
-        Objects.requireNonNull(getCommand("welhelp")).setExecutor(new helpWelfare());//帮助 命令
-        Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());//访问Github 命令
-        Objects.requireNonNull(getCommand("welbfn")).setExecutor(new bf());//福利 命令
-        Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());//检查更新 命令
-        Objects.requireNonNull(getCommand("welreload")).setExecutor(new reload());//重载命令
-        Objects.requireNonNull(getCommand("welrel")).setExecutor(new reload());//重载命令
+
+        //加载配置文件
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        GITHUB_AND_GITEE.GITHUB_AND_GITEE_NAIN();
+
+        getServer().getPluginManager().registerEvents(new Guibf(),this);//福利
+        getServer().getPluginManager().registerEvents(new GuiGithub(),this);//Github
+        getServer().getPluginManager().registerEvents(new Guiver(),this);//查看版本
+        getServer().getPluginManager().registerEvents(new PlayerChatEvent(),this);//屏蔽脏话
+        getServer().getPluginManager().registerEvents(new Bed_egg(),this);//彩蛋
+        Objects.requireNonNull(getCommand("welver")).setExecutor(new versionWelfare());//查看版本
+        Objects.requireNonNull(getCommand("welgui")).setExecutor(new GuiOpen());//GUI
+        Objects.requireNonNull(getCommand("welhelp")).setExecutor(new helpWelfare());//帮助
+        Objects.requireNonNull(getCommand("welGithub")).setExecutor(new HubGit());//访问Github
+        Objects.requireNonNull(getCommand("welbfn")).setExecutor(new bf());//福利
+        Objects.requireNonNull(getCommand("welup")).setExecutor(new MainUpdateWelfare());//检查更新
+        Objects.requireNonNull(getCommand("welreload")).setExecutor(new reload());//重载
+        Objects.requireNonNull(getCommand("welrel")).setExecutor(new reload());//重载
         Objects.requireNonNull(getCommand("Welfare")).setExecutor(new welfare());//插件主命令
 
+        //检查更新
+        CongetLatestVersion();
+
         //定时检查更新,每隔30分钟检测一次
-        if (WelfareDev == 1){//检测是否为测试版本
-            if (statementWelfare.config.getConfig().getBoolean("TimeUpdate") == true){//检测定时检查更新是否开启
-                new UpdateTime().run();
-            }else {
+        if (WelfareDev == 0) {//检测是否为测试版本
+            if (statementWelfare.config.getConfig().getBoolean("TimeUpdate") == true) {//检测定时检查更新是否开启
+                try {
+                    sleep(1800000);
+                    CongetLatestVersion();
+                } catch (Throwable ignored) {
+
+                }
+            } else {
                 getLogger().info("自动检查更新已禁用！");
             }
         }
 
     }
-
 
     @Override
     public void onDisable() {

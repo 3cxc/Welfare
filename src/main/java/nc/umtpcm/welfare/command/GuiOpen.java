@@ -1,6 +1,6 @@
 package nc.umtpcm.welfare.command;
 
-import nc.umtpcm.welfare.gui.Gui_Hub;
+import nc.umtpcm.welfare.gui.core.Gui_Hub;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
