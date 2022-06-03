@@ -13,6 +13,11 @@ import static nc.umtpcm.welfare.tools.statementWelfare.*;
 
 public class PlayerLatestVersions {
     public static String PlayergetLatestVersion(){
+        //重载更新变量，防止报错
+        webver = 0;
+        Pwebver = 0;
+        latestVer = 0;
+        PlatestVer = 0;
         try {
             try {
                 URL Upurl = new URL(UpdateUrls);

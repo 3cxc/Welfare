@@ -10,13 +10,12 @@ import org.bukkit.inventory.ItemStack;
 
 import static nc.umtpcm.welfare.tools.statementWelfare.*;
 
-@SuppressWarnings("PointlessBooleanExpression")
 public class bf implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (config.getConfig().getBoolean("Enable") == true){
+            if (config.getConfig().getBoolean("Enable")){
                 player.sendMessage(ChatColor.BLUE + "你获得了福利");
                 ItemStack bf_item = new ItemStack(Material.COAL_BLOCK,64);//给予福利 煤块 一组
                 player.getInventory().addItem(bf_item);

@@ -4,6 +4,7 @@ import nc.umtpcm.welfare.Update.GITHUB_AND_GITEE;
 import nc.umtpcm.welfare.Update.MainUpdateWelfare;
 import nc.umtpcm.welfare.command.*;
 import nc.umtpcm.welfare.event.PlayerChatEvent;
+import nc.umtpcm.welfare.event.eggs.AllPlayerChat_egg;
 import nc.umtpcm.welfare.event.eggs.Bed_egg;
 import nc.umtpcm.welfare.gui.GuiGithub;
 import nc.umtpcm.welfare.gui.Guibf;
@@ -48,19 +49,14 @@ public final class Welfare extends JavaPlugin {
     }
 
     @Override
-    @SuppressWarnings("PointlessBooleanExpression")
     public void onEnable() {
         //启动提示
         getLogger().info("插件已加载，作者:3cxc");
         getLogger().info("请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
         getLogger().info("插件的Github地址：https://github.com/3cxc/Welfare");
         if (WelfareDev == 1){
-            getLogger().info("警告：您目前正在使用内部版本！您应该知道您在做什么！");
-            getLogger().info("警告：我们不会对内部版本提供支持！如果使用内部版本发生任何问题我们不会处理！");
-            getLogger().info("警告！该插件已停止更新！请使用正式版本：11 否则后果自负！");
+            getLogger().info("警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
         }
-
-
 
         //加载配置文件
         getConfig().options().copyDefaults();
@@ -72,7 +68,8 @@ public final class Welfare extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GuiGithub(),this);//Github
         getServer().getPluginManager().registerEvents(new Guiver(),this);//查看版本
         getServer().getPluginManager().registerEvents(new PlayerChatEvent(),this);//屏蔽脏话
-        getServer().getPluginManager().registerEvents(new Bed_egg(),this);//彩蛋
+        getServer().getPluginManager().registerEvents(new Bed_egg(),this);//彩蛋01
+        getServer().getPluginManager().registerEvents(new AllPlayerChat_egg(),this);//彩蛋02
         Objects.requireNonNull(getCommand("welver")).setExecutor(new versionWelfare());//查看版本
         Objects.requireNonNull(getCommand("welgui")).setExecutor(new GuiOpen());//GUI
         Objects.requireNonNull(getCommand("welhelp")).setExecutor(new helpWelfare());//帮助
@@ -88,7 +85,7 @@ public final class Welfare extends JavaPlugin {
 
         //定时检查更新,每隔30分钟检测一次
         if (WelfareDev == 0) {//检测是否为测试版本
-            if (statementWelfare.config.getConfig().getBoolean("TimeUpdate") == true) {//检测定时检查更新是否开启
+            if (statementWelfare.config.getConfig().getBoolean("TimeUpdate")) {//检测定时检查更新是否开启
                 try {
                     sleep(1800000);
                     CongetLatestVersion();
@@ -106,9 +103,7 @@ public final class Welfare extends JavaPlugin {
     public void onDisable() {
         getLogger().info("插件已卸载，作者:3cxc");
         if (WelfareDev == 1){
-            getLogger().info("警告：您目前正在使用内部版本！您应该知道您在做什么！");
-            getLogger().info("警告：我们不会对内部版本提供支持！如果使用内部版本发生任何问题我们不会处理！");
-            getLogger().info("警告！该插件已停止更新！请使用正式版本：11 否则后果自负！");
+            getLogger().info("警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
         }
     }
 }

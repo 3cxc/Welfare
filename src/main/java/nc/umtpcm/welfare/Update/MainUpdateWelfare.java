@@ -20,11 +20,11 @@ public class MainUpdateWelfare implements CommandExecutor {
                 if (player.hasPermission("Welfare.admin.reload")){
                     PlayergetLatestVersion();
                 }else player.sendMessage(ChatColor.RED + Welprefix + "您没有权限！");
-            }else player.sendMessage(ChatColor.RED+ Welprefix +"错误：内部版本无法检查更新！");
+            }else player.sendMessage(ChatColor.RED+ Welprefix +"错误：测试版本无法检查更新！");
         }else{
             if (WelfareDev == 0){
                 CongetLatestVersion();
-            }else System.out.println(ChatColor.RED+ Welprefix +"错误：内部版本无法检查更新！");
+            }else System.out.println(ChatColor.RED+ Welprefix +"错误：测试版本无法检查更新！");
         }
         return false;
     }

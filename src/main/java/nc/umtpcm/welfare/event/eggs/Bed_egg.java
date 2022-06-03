@@ -14,11 +14,10 @@ import java.util.Random;
 
 import static nc.umtpcm.welfare.tools.statementWelfare.config;
 
-@SuppressWarnings("PointlessBooleanExpression")
 public class Bed_egg implements Listener {
     @EventHandler
     public void Bed_Egg(PlayerBedLeaveEvent event){
-        if (config.getConfig().getBoolean("Egg") == true){
+        if (config.getConfig().getBoolean("Egg")){
             Player player = event.getPlayer();
             int temp = 0;
             Random rd = new Random();

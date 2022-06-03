@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 public class statementWelfare {
     public static Plugin config = Welfare.getPlugin(Welfare.class);
     public static int version = config.getConfig().getInt("Version");
-    public static String vercon = "修复更新站无法访问的问题，增加新功能";
+    public static String vercon = "修复重载时部分参数不重载的问题，修复更新站错误，修复配置文件错误";
     public static String github = "https://github.com/3cxc/Welfare";
     public static int webver = 0;
     public static int Pwebver = 0;

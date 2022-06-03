@@ -1,6 +1,7 @@
 package nc.umtpcm.welfare.command;
 
 import nc.umtpcm.welfare.Welfare;
+import nc.umtpcm.welfare.tools.Reload_Data;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,9 +16,10 @@ public class reload implements CommandExecutor {
         if (player.hasPermission("Welfare.admin.reload")){
             try {
                 Welfare.instant.reloadConfig();
+                Reload_Data.Reload_Data_main();
                 player.sendMessage(ChatColor.GREEN + "[Welfare]插件重载完成！");
             }catch (Throwable e){
-                player.sendMessage(ChatColor.RED + "[Welfare]插件重载失败！具体原因请查看后台！");
+                player.sendMessage(ChatColor.RED + "[Welfare]插件重载失败！");
                 e.printStackTrace();
             }
         }else {
@@ -26,8 +28,8 @@ public class reload implements CommandExecutor {
         }
         }else
             try {
-
             Welfare.instant.reloadConfig();
+            Reload_Data.Reload_Data_main();
             System.out.println("插件重载完成");
 
         }catch (Throwable e){

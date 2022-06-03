@@ -14,7 +14,6 @@ import java.util.Objects;
 import static nc.umtpcm.welfare.tools.statementWelfare.*;
 
 public class Gui_Hub {
-    @SuppressWarnings("PointlessBooleanExpression")
     public static void main_gui(Player player){
         //新建物品栏（GUI）
         Inventory guiHubWelfare = Bukkit.createInventory(player,9, ChatColor.BLUE+"菜单");
@@ -54,7 +53,7 @@ public class Gui_Hub {
         //
 
         //设置物品
-        if (config.getConfig().getBoolean("Enable") == true){
+        if (config.getConfig().getBoolean("Enable")){
             guiHubWelfare.setItem(0,zgui_bf_item);
             guiHubWelfare.setItem(1,zgui_Git_item);
             guiHubWelfare.setItem(2,zgui_ver_item);

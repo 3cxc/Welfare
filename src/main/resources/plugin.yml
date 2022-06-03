@@ -30,13 +30,17 @@ commands:
 permissions:
   Welfare.admin:
     default: op
-    description: Welfare全部的权限
+    description: OP权限
     children:
       Welfare.admin.reload: true
       Welfare.admin.update: true
+      Welfare.admin.pass: true
   Welfare.admin.reload:
     default: op
     description: 重载插件权限
   Welfare.admin.update:
     default: op
     description: 检查更新权限
+  Welfare.admin.pass:
+    default: op
+    description: 绕过屏蔽脏话功能
