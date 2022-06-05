@@ -7,22 +7,6 @@ Version: '24'
 #Whether to enable Welfare plugin. It is enabled by default
 Enable: true
 
-#item_name: '煤块'
-#给予的物品的名称
-#旧功能(无效)
-#Name of the item given
-#Legacy features (invalid)
-#item_data: 'COAL_BLACK'
-#给什么东西(只能是原版物品),就填物品的命令名称(如煤炭 = COAL)
-#旧功能(无效)
-#If you give something (only the original item), fill in the command name of the item (e.g. COAL = COAL)
-#Legacy features (invalid)
-#item_amount: 64
-#给予福利的数量
-#旧功能(无效)
-#Number of benefits granted
-#Legacy features (invalid)
-
 #启动测试功能(不稳定)
 #Start test function (unstable)
 DeBug: false
