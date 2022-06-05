@@ -1,0 +1,50 @@
+#插件版本号(请勿更改)
+#Plugin version number (do not change)
+Version: '24'
+
+
+#是否启用Welfare插件,默认开启
+#Whether to enable Welfare plugin. It is enabled by default
+Enable: true
+
+#item_name: '煤块'
+#给予的物品的名称
+#旧功能(无效)
+#Name of the item given
+#Legacy features (invalid)
+#item_data: 'COAL_BLACK'
+#给什么东西(只能是原版物品),就填物品的命令名称(如煤炭 = COAL)
+#旧功能(无效)
+#If you give something (only the original item), fill in the command name of the item (e.g. COAL = COAL)
+#Legacy features (invalid)
+#item_amount: 64
+#给予福利的数量
+#旧功能(无效)
+#Number of benefits granted
+#Legacy features (invalid)
+
+#启动测试功能(不稳定)
+#Start test function (unstable)
+DeBug: false
+
+#启动彩蛋(自己探索)
+#colored eggs (explore by yourself)
+Egg: false
+
+
+#如果你想从Github检测更新,就将下面的UpdateUrl改为Github
+#如果你想从Gitee检测更新,就将下面的UpdateUrl改为Gitee
+#默认从Github检测更新
+#If you want to detect updates from GitHub, change the updateurl below to GitHub
+#If you want to detect updates from gitee, change the updateurl below to gitee
+#Detect updates from GitHub by default
+UpdateUrl: 'Github'
+
+#屏蔽脏话(不稳定)
+#Shield dirty words (unstable)
+WordsEnable: false
+#要屏蔽的脏话
+#Dirty words to block
+Words:
+  - 'sb'
+  - 'fuck'
