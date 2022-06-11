@@ -1,14 +1,10 @@
 package nc.umtpcm.welfare;
 
-import nc.umtpcm.welfare.Update.Console;
-import nc.umtpcm.welfare.Update.GITHUB_AND_GITEE;
+import nc.umtpcm.welfare.Update.*;
 import nc.umtpcm.welfare.command.*;
-import nc.umtpcm.welfare.event.PlayerChatEvent;
-import nc.umtpcm.welfare.event.eggs.AllPlayerChat_egg;
-import nc.umtpcm.welfare.event.eggs.Bed_egg;
-import nc.umtpcm.welfare.gui.GuiGithub;
-import nc.umtpcm.welfare.gui.Guibf;
-import nc.umtpcm.welfare.gui.Guiver;
+import nc.umtpcm.welfare.event.*;
+import nc.umtpcm.welfare.event.eggs.*;
+import nc.umtpcm.welfare.gui.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -74,7 +70,7 @@ public final class Welfare extends JavaPlugin {
         Objects.requireNonNull(getCommand("Welfare")).setExecutor(new Main_command());//插件主命令
 
         //检查更新
-        new Console().run();
+        new Console().UpdateConsole();
 
     }
 
