@@ -1,6 +1,6 @@
 #插件版本号(请勿更改)
 #Plugin version number (do not change)
-Version: '24'
+Version: '24.0.0.2'
 
 
 #是否启用Welfare插件,默认开启
@@ -23,6 +23,10 @@ Egg: false
 #If you want to detect updates from gitee, change the updateurl below to gitee
 #Detect updates from GitHub by default
 UpdateUrl: 'Github'
+
+#执行检查更新命令时忽略需要的证书，如执行报错原因里有SSL的话请尝试开启此功能
+#Ignore the required certificate when executing the check update command. If there is SSL in the error reason, please try to enable this function
+noSSL: false
 
 #屏蔽脏话(不稳定)
 #Shield dirty words (unstable)
