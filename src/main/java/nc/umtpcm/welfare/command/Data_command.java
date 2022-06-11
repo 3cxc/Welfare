@@ -115,14 +115,14 @@ public class Data_command {//所有命令都在这里
     public static void PlayerUpdate(Player player){//检测更新
         if (WelfareDev == 0){//检查是否是测试版本
             if (player.hasPermission("Welfare.admin.update")){//检查是否有权限
-                new nc.umtpcm.welfare.Update.Player().run();
+                new nc.umtpcm.welfare.Update.Player().UpdatePlayer(player);
             }else player.sendMessage(ChatColor.RED + Welprefix + "您没有权限！");
         }else player.sendMessage(ChatColor.RED+ Welprefix +"错误：测试版本无法检查更新！");
     }
 
     public static void ConsoleUpdate(){//检测更新
         if (WelfareDev == 0){//检查是否是测试版本
-            new Console().run();
+            new Console().UpdateConsole();
         }else System.out.println(ChatColor.RED+ Welprefix +"错误：测试版本无法检查更新！");
     }
 }
