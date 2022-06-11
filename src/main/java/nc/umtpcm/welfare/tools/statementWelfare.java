@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 public class statementWelfare {
     public static Plugin config = Welfare.getPlugin(Welfare.class);
     public static String version = config.getConfig().getString("Version");
-    public static String vercon = "现在更新是异步的了(不卡线程),命令调用重写,插件大改,版本号更改";
+    public static String vercon = "修复更新检查卡死的问题，优化代码";
     public static String github = "https://github.com/3cxc/Welfare";
     public static int WelfareDev = 0;
 
