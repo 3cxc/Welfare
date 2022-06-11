@@ -8,6 +8,10 @@ website: https://github.com/3cxc/Welfare
 commands:
   welfare:
     description: 插件主命令
+    usage: /welfare <help|reload|version|update|open_gui|github|bf>
+    aliases: [Welfare]
+    permission: Welfare.use
+    permission-message: "您没有权限！"
 
 permissions:
   Welfare.admin:
@@ -17,6 +21,7 @@ permissions:
       Welfare.admin.reload: true
       Welfare.admin.update: true
       Welfare.admin.pass: true
+      Welfare.use: true
   Welfare.admin.reload:
     default: op
     description: 重载插件权限
@@ -26,3 +31,6 @@ permissions:
   Welfare.admin.pass:
     default: op
     description: 绕过屏蔽脏话功能
+  Welfare.use:
+    default: true
+    description: 玩家默认权限
