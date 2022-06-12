@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.Objects;
-import java.util.logging.Logger;
+
 
 import static nc.umtpcm.welfare.tools.statementWelfare.WelfareDev;
 
@@ -47,12 +47,11 @@ public final class Welfare extends JavaPlugin {
     @Override
     public void onEnable() {
         //启动提示
-        getLogger().info("插件已加载，作者:3cxc");
-        getLogger().info("请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
-        getLogger().info("插件的Github地址：https://github.com/3cxc/Welfare");
-        Logger.getLogger("");
+        getLogger().info("§a插件已加载，作者:3cxc");
+        getLogger().info("§c请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
+        getLogger().info("§b插件的Github地址：https://github.com/3cxc/Welfare");
     if (WelfareDev == 1){
-            getLogger().info("警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
+            getLogger().info("§c警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
         }
 
         //加载配置文件
@@ -67,6 +66,7 @@ public final class Welfare extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChatEvent(),this);//屏蔽脏话
         getServer().getPluginManager().registerEvents(new Bed_egg(),this);//彩蛋01
         getServer().getPluginManager().registerEvents(new AllPlayerChat_egg(),this);//彩蛋02
+        getServer().getPluginManager().registerEvents(new Key_egg(),this);//彩蛋03
         Objects.requireNonNull(getCommand("Welfare")).setExecutor(new Main_command());//插件主命令
 
         //检查更新
@@ -76,9 +76,9 @@ public final class Welfare extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("插件已卸载，作者:3cxc");
+        getLogger().info("§a插件已卸载，作者:3cxc");
         if (WelfareDev == 1){
-            getLogger().info("警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
+            getLogger().info("§c警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
         }
     }
 }

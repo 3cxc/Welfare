@@ -1,6 +1,5 @@
 package nc.umtpcm.welfare.command;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -31,7 +30,7 @@ public final class Main_command implements TabExecutor {
                 case "bf":
                     if (sender != null){
                         getbf(player);
-                    }else System.out.println(ChatColor.RED + Player_Error);
+                    }else System.out.println(Player_Error);
                     break;
 
                 case "version":
@@ -43,7 +42,7 @@ public final class Main_command implements TabExecutor {
                 case "open_gui":
                     if (sender != null){
                         OpenGui(player);
-                    }else System.out.println(ChatColor.RED + Player_Error);
+                    }else System.out.println(Player_Error);
                     break;
 
                 case "github":
@@ -64,7 +63,7 @@ public final class Main_command implements TabExecutor {
                     }else ConsoleUpdate();
                     break;
                 default:
-                    sendMessage(sender, "未知的子命令！");
+                    sendMessage(sender, "§c未知的子命令！");
             }
         return true;
     }

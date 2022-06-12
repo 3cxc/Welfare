@@ -1,7 +1,6 @@
 package nc.umtpcm.welfare.Update;
 
 import nc.umtpcm.welfare.tools.SslUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -33,14 +32,17 @@ public class Player {
             InputStream is = url.openStream();
             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             webver = br.readLine();
-        }catch (Exception e) {
+            is.close();
+            br.close();
+        }catch (Throwable e) {
             e.printStackTrace();
+            player.sendMessage("§c错误！无法检查更新！");
         }
         String latestVer = webver;
         if (Objects.equals(version, webver)){
-            player.sendMessage(ChatColor.AQUA + "插件已是最新版本！");
+            player.sendMessage("§b插件已是最新版本！");
         }else{
-            player.sendMessage(ChatColor.AQUA + "发现了新版本：" + latestVer + " 请前往：" + github + " 获取最新版本！");
+            player.sendMessage("§b发现了新版本：" + latestVer + " 请前往：" + github + " 获取最新版本！");
         }
     }
 }

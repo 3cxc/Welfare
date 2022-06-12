@@ -11,7 +11,7 @@ commands:
     usage: /welfare <help|reload|version|update|open_gui|github|bf>
     aliases: [Welfare]
     permission: Welfare.use
-    permission-message: "您没有权限！"
+    permission-message: "§c您没有权限！"
 
 permissions:
   Welfare.admin:
