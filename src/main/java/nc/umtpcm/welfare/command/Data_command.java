@@ -32,29 +32,11 @@ public class Data_command {//所有命令都在这里
     }
 
     public static void ConsoleHelplist(){//瞎搞的分割 XD
-        System.out.println(help_1);//控制台的帮助
-        System.out.println(help_3);
-        System.out.println(help_4);
-        System.out.println(help_5);
-        System.out.println(help_7);
-        System.out.println(help_9);
-        System.out.println(help_10);
-        System.out.println(help_11);
-        System.out.println(help_12);
-        System.out.println(help_13);
+        System.out.println(HelpList);
     }
 
     public static void PlayerHelplist(Player player){//瞎搞的分割 XD
-        player.sendMessage(help_1);//玩家的帮助
-        player.sendMessage(help_3);
-        player.sendMessage(help_4);
-        player.sendMessage(help_5);
-        player.sendMessage(help_7);
-        player.sendMessage(help_9);
-        player.sendMessage(help_10);
-        player.sendMessage(help_11);
-        player.sendMessage(help_12);
-        player.sendMessage(help_13);
+        player.sendMessage(String.valueOf(HelpList));//玩家的帮助
     }
 
     public static void OpenGithubPlayer(Player player){//Github地址
@@ -114,19 +96,15 @@ public class Data_command {//所有命令都在这里
 
     public static void PlayerUpdate(Player player){//检测更新
         if (WelfareDev == 0){//检查是否是测试版本
-            if (config.getConfig().getBoolean("DeBug")){
-                if (player.hasPermission("Welfare.admin.update")){//检查是否有权限
-                    new nc.umtpcm.welfare.Update.Player().UpdatePlayer(player);
-                }else player.sendMessage(ChatColor.RED + Welprefix + "§c您没有权限！");
-            }else player.sendMessage(Welprefix +"§c错误：由于测试功能已打开，无法检查更新！");
+            if (player.hasPermission("Welfare.admin.update")){//检查是否有权限
+                nc.umtpcm.welfare.Update.Player.PlayerUpdate(player);
+            }else player.sendMessage(ChatColor.RED + Welprefix + "§c您没有权限！");
         }else player.sendMessage(Welprefix +"§c错误：测试版本无法检查更新！");
     }
 
     public static void ConsoleUpdate(){//检测更新
         if (WelfareDev == 0){//检查是否是测试版本
-            if (config.getConfig().getBoolean("DeBug")){
-                new Console().UpdateConsole();
-            }else System.out.println("§c错误：由于测试功能已打开，无法检查更新！");
+            Console.ConsoleUpdate();
         }else System.out.println("§c错误：测试版本无法检查更新！");
     }
 }

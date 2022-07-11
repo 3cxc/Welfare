@@ -1,25 +1,15 @@
 #插件版本号(请勿更改)
 #Plugin version number (do not change)
-Version: '24.0.0.6'
+Version: '24.0.2'
 
 
 #是否启用Welfare插件,默认开启
 #Whether to enable Welfare plugin. It is enabled by default
 Enable: true
 
-#启动测试功能(不稳定)
-#注意！启用测试功能将无法检查更新！
-#Start test function (unstable)
-#be careful! If you enable the test function, you will not be able to check for updates!
-DeBug: false
-
 #启动彩蛋(自己探索)
 #colored eggs (explore by yourself)
 Egg: false
-
-#是否只有管理员才能触发彩蛋密钥（在聊天框里输入Egg_key会提示一个网址,里面有一串密钥）
-#Whether only the administrator can trigger the egg key (entering the key in the chat box will prompt a string of keys)
-Egg_AdminKey: false
 
 #如果你想从Github检测更新,就将下面的UpdateUrl改为Github
 #如果你想从Gitee检测更新,就将下面的UpdateUrl改为Gitee
@@ -33,8 +23,8 @@ UpdateUrl: 'Github'
 #Ignore the required certificate when executing the check update command. If there is SSL in the error reason, please try to enable this function
 noSSL: false
 
-#屏蔽脏话(不稳定)
-#Shield dirty words (unstable)
+#屏蔽脏话
+#Shield dirty words
 WordsEnable: false
 #要屏蔽的脏话
 #Dirty words to block

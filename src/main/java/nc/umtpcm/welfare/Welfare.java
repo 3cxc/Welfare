@@ -1,16 +1,21 @@
 package nc.umtpcm.welfare;
 
-import nc.umtpcm.welfare.Update.*;
-import nc.umtpcm.welfare.command.*;
-import nc.umtpcm.welfare.event.*;
-import nc.umtpcm.welfare.event.eggs.*;
-import nc.umtpcm.welfare.gui.*;
+import nc.umtpcm.welfare.Update.Console;
+import nc.umtpcm.welfare.Update.GITHUB_AND_GITEE;
+import nc.umtpcm.welfare.command.Main_command;
+import nc.umtpcm.welfare.event.PlayerChatEvent;
+import nc.umtpcm.welfare.event.eggs.AllPlayerChat_egg;
+import nc.umtpcm.welfare.event.eggs.Bed_egg;
+import nc.umtpcm.welfare.gui.GuiGithub;
+import nc.umtpcm.welfare.gui.Guibf;
+import nc.umtpcm.welfare.gui.Guiver;
+import nc.umtpcm.welfare.tools.statementWelfare;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.Objects;
 
-
+import static nc.umtpcm.welfare.tools.statementWelfare.HelpList_Initialize;
 import static nc.umtpcm.welfare.tools.statementWelfare.WelfareDev;
 
 
@@ -50,28 +55,30 @@ public final class Welfare extends JavaPlugin {
         getLogger().info("§a插件已加载，作者:3cxc");
         getLogger().info("§c请确保您在使用的是开源的Welfare！未知来源的Welfare可能会破坏您的服务器！");
         getLogger().info("§b插件的Github地址：https://github.com/3cxc/Welfare");
-    if (WelfareDev == 1){
+        if (WelfareDev == 1){
             getLogger().info("§c警告：您目前正在使用不稳定的测试版本！您应该知道您在做什么！");
         }
 
-        //加载配置文件
+        //加载配置文件及设置
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        HelpList_Initialize();
 
         GITHUB_AND_GITEE.GITHUB_AND_GITEE_NAIN();
 
-        getServer().getPluginManager().registerEvents(new Guibf(),this);//福利
+        getServer().getPluginManager().registerEvents(new Guibf(),this);//福利/
         getServer().getPluginManager().registerEvents(new GuiGithub(),this);//Github
         getServer().getPluginManager().registerEvents(new Guiver(),this);//查看版本
         getServer().getPluginManager().registerEvents(new PlayerChatEvent(),this);//屏蔽脏话
         getServer().getPluginManager().registerEvents(new Bed_egg(),this);//彩蛋01
         getServer().getPluginManager().registerEvents(new AllPlayerChat_egg(),this);//彩蛋02
-        getServer().getPluginManager().registerEvents(new Key_egg(),this);//彩蛋03
         Objects.requireNonNull(getCommand("Welfare")).setExecutor(new Main_command());//插件主命令
+        Objects.requireNonNull(getCommand("Welfare")).setTabCompleter(new Main_command());
 
         //检查更新
-        new Console().UpdateConsole();
-
+        if (WelfareDev == 0){
+            Console.ConsoleUpdate();
+        }
     }
 
     @Override

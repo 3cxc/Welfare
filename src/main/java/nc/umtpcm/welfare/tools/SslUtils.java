@@ -39,10 +39,6 @@ public class SslUtils {
         }
     }
 
-    /*
-     * 忽略HTTPS请求的SSL证书，必须在openConnection之前调用
-     * @throws Exception
-     */
     public static void ignoreSsl() throws Exception{
         HostnameVerifier hv = new HostnameVerifier() {
             public boolean verify(String urlHostName, SSLSession session) {

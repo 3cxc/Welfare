@@ -1,23 +1,25 @@
 package nc.umtpcm.welfare.command;
 
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static nc.umtpcm.welfare.command.Data_command.*;
 import static nc.umtpcm.welfare.tools.statementWelfare.Player_Error;
 import static nc.umtpcm.welfare.tools.statementWelfare.Welprefix;
 
-public final class Main_command implements TabExecutor {
+public final class Main_command implements CommandExecutor,TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
             Player player = (Player) sender;
             if (args.length == 0){
-                return false;
+                sender.sendMessage("输入/welfare help查看可用命令");
             }
             switch (args[0].toLowerCase()){
 
@@ -49,7 +51,7 @@ public final class Main_command implements TabExecutor {
                     if (sender != null){
                         OpenGithubPlayer(player);
                     }else OpenGithubConsole();
-                    break;
+
 
                 case "reload":
                     if (sender != null){
@@ -67,10 +69,20 @@ public final class Main_command implements TabExecutor {
             }
         return true;
     }
-
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
-        return TabComplete.getCompleteList(args, TabComplete.getTabList(args, cmd.getName()));
+        if (args.length == 1){//当玩家开始输入命令时返回命令列表
+            List<String> list = new ArrayList<>();
+            list.add("help");
+            list.add("bf");
+            list.add("version");
+            list.add("open_gui");
+            list.add("github");
+            list.add("reload");
+            list.add("update");
+            return list;
+        }
+        return null;
     }
 
     public static void sendMessage(CommandSender sender, String message) {
